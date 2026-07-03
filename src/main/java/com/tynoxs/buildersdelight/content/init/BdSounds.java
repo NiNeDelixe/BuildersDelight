@@ -14,7 +14,7 @@ public class BdSounds {
     public static final RegistryObject<SoundEvent> CHISELING_SOUND = registerSoundEvent("chiseling");
 
     public static RegistryObject<SoundEvent> registerSoundEvent(String name) {
-        return SOUND_EVENTS.register(name, () -> SoundEvent.createVariableRangeEvent(new ResourceLocation(BuildersDelight.MODID, name)));
+        return SOUND_EVENTS.register(name, () -> SoundEvent.createVariableRangeEvent(ResourceLocation.fromNamespaceAndPath(BuildersDelight.MODID, name)));
     }
 
     public static void register(IEventBus eventBus){

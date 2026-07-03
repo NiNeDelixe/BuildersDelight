@@ -945,64 +945,64 @@ public class BdItemModelProvider extends ItemModelProvider {
 
     private ItemModelBuilder simpleItem(Item item) {
         return withExistingParent(item.toString(),
-                new ResourceLocation("item/generated")).texture("layer0",
-                new ResourceLocation(BuildersDelight.MODID, "item/" + item));
+                ResourceLocation.parse("item/generated")).texture("layer0",
+                ResourceLocation.fromNamespaceAndPath(BuildersDelight.MODID, "item/" + item));
     }
 
     private ItemModelBuilder handheldItem(Item item) {
         return withExistingParent(item.toString(),
-                new ResourceLocation("item/handheld")).texture("layer0",
-                new ResourceLocation(BuildersDelight.MODID, "item/" + item));
+                ResourceLocation.parse("item/handheld")).texture("layer0",
+                ResourceLocation.fromNamespaceAndPath(BuildersDelight.MODID, "item/" + item));
     }
 
     private ItemModelBuilder complexBlock(Block block) {
-        return withExistingParent(ForgeRegistries.BLOCKS.getKey(block).getPath(), new ResourceLocation(BuildersDelight.MODID,
+        return withExistingParent(ForgeRegistries.BLOCKS.getKey(block).getPath(), ResourceLocation.fromNamespaceAndPath(BuildersDelight.MODID,
                 "block/" + ForgeRegistries.BLOCKS.getKey(block).getPath()));
     }
 
     public ItemModelBuilder paneItem(RegistryObject<Block> block, RegistryObject<Block> baseBlock) {
-        return withExistingParent(ForgeRegistries.BLOCKS.getKey(block.get()).getPath(), new ResourceLocation(BuildersDelight.MODID, "block/" + "glass_pane"))
-                .texture("glass", new ResourceLocation(BuildersDelight.MODID, "block/" + ForgeRegistries.BLOCKS.getKey(baseBlock.get()).getPath()))
-                .texture("side", new ResourceLocation(BuildersDelight.MODID, "block/" + ForgeRegistries.BLOCKS.getKey(block.get()).getPath() + "_top"));
+        return withExistingParent(ForgeRegistries.BLOCKS.getKey(block.get()).getPath(), ResourceLocation.fromNamespaceAndPath(BuildersDelight.MODID, "block/" + "glass_pane"))
+                .texture("glass", ResourceLocation.fromNamespaceAndPath(BuildersDelight.MODID, "block/" + ForgeRegistries.BLOCKS.getKey(baseBlock.get()).getPath()))
+                .texture("side", ResourceLocation.fromNamespaceAndPath(BuildersDelight.MODID, "block/" + ForgeRegistries.BLOCKS.getKey(block.get()).getPath() + "_top"));
     }
 
     public void carpetItem(RegistryObject<Block> block, RegistryObject<Block> baseBlock) {
         this.withExistingParent(ForgeRegistries.BLOCKS.getKey(block.get()).getPath(), mcLoc("block/carpet"))
-                .texture("wool", new ResourceLocation(BuildersDelight.MODID, "block/" + ForgeRegistries.BLOCKS.getKey(baseBlock.get()).getPath()));
+                .texture("wool", ResourceLocation.fromNamespaceAndPath(BuildersDelight.MODID, "block/" + ForgeRegistries.BLOCKS.getKey(baseBlock.get()).getPath()));
     }
 
     public void logItem(RegistryObject<Block> block) {
         this.withExistingParent(ForgeRegistries.BLOCKS.getKey(block.get()).getPath(), mcLoc("block/cube_column"))
-                .texture("side", new ResourceLocation(BuildersDelight.MODID, "block/" + ForgeRegistries.BLOCKS.getKey(block.get()).getPath()))
-                .texture("end", new ResourceLocation(BuildersDelight.MODID, "block/" + ForgeRegistries.BLOCKS.getKey(block.get()).getPath() + "_top"));
+                .texture("side", ResourceLocation.fromNamespaceAndPath(BuildersDelight.MODID, "block/" + ForgeRegistries.BLOCKS.getKey(block.get()).getPath()))
+                .texture("end", ResourceLocation.fromNamespaceAndPath(BuildersDelight.MODID, "block/" + ForgeRegistries.BLOCKS.getKey(block.get()).getPath() + "_top"));
     }
 
     public void slabItem(RegistryObject<Block> block, RegistryObject<Block> baseBlock) {
         this.withExistingParent(ForgeRegistries.BLOCKS.getKey(block.get()).getPath(), mcLoc("block/slab"))
-                .texture("side", new ResourceLocation(BuildersDelight.MODID, "block/" + ForgeRegistries.BLOCKS.getKey(baseBlock.get()).getPath()))
-                .texture("bottom", new ResourceLocation(BuildersDelight.MODID, "block/" + ForgeRegistries.BLOCKS.getKey(baseBlock.get()).getPath()))
-                .texture("top", new ResourceLocation(BuildersDelight.MODID, "block/" + ForgeRegistries.BLOCKS.getKey(baseBlock.get()).getPath()));
+                .texture("side", ResourceLocation.fromNamespaceAndPath(BuildersDelight.MODID, "block/" + ForgeRegistries.BLOCKS.getKey(baseBlock.get()).getPath()))
+                .texture("bottom", ResourceLocation.fromNamespaceAndPath(BuildersDelight.MODID, "block/" + ForgeRegistries.BLOCKS.getKey(baseBlock.get()).getPath()))
+                .texture("top", ResourceLocation.fromNamespaceAndPath(BuildersDelight.MODID, "block/" + ForgeRegistries.BLOCKS.getKey(baseBlock.get()).getPath()));
     }
 
     public void vanillaSlabItem(RegistryObject<Block> block, Block baseBlock) {
         this.withExistingParent(ForgeRegistries.BLOCKS.getKey(block.get()).getPath(), mcLoc("block/stairs"))
-                .texture("side", new ResourceLocation(mcLoc("block/") + ForgeRegistries.BLOCKS.getKey(baseBlock).getPath()))
-                .texture("bottom", new ResourceLocation(mcLoc("block/") + ForgeRegistries.BLOCKS.getKey(baseBlock).getPath()))
-                .texture("top", new ResourceLocation(mcLoc("block/") + ForgeRegistries.BLOCKS.getKey(baseBlock).getPath()));
+                .texture("side", ResourceLocation.parse(mcLoc("block/") + ForgeRegistries.BLOCKS.getKey(baseBlock).getPath()))
+                .texture("bottom", ResourceLocation.parse(mcLoc("block/") + ForgeRegistries.BLOCKS.getKey(baseBlock).getPath()))
+                .texture("top", ResourceLocation.parse(mcLoc("block/") + ForgeRegistries.BLOCKS.getKey(baseBlock).getPath()));
     }
 
     public void stairsItem(RegistryObject<Block> block, RegistryObject<Block> baseBlock) {
         this.withExistingParent(ForgeRegistries.BLOCKS.getKey(block.get()).getPath(), mcLoc("block/stairs"))
-                .texture("side", new ResourceLocation(BuildersDelight.MODID, "block/" + ForgeRegistries.BLOCKS.getKey(baseBlock.get()).getPath()))
-                .texture("bottom", new ResourceLocation(BuildersDelight.MODID, "block/" + ForgeRegistries.BLOCKS.getKey(baseBlock.get()).getPath()))
-                .texture("top", new ResourceLocation(BuildersDelight.MODID, "block/" + ForgeRegistries.BLOCKS.getKey(baseBlock.get()).getPath()));
+                .texture("side", ResourceLocation.fromNamespaceAndPath(BuildersDelight.MODID, "block/" + ForgeRegistries.BLOCKS.getKey(baseBlock.get()).getPath()))
+                .texture("bottom", ResourceLocation.fromNamespaceAndPath(BuildersDelight.MODID, "block/" + ForgeRegistries.BLOCKS.getKey(baseBlock.get()).getPath()))
+                .texture("top", ResourceLocation.fromNamespaceAndPath(BuildersDelight.MODID, "block/" + ForgeRegistries.BLOCKS.getKey(baseBlock.get()).getPath()));
     }
 
     public void vanillaStairsItem(RegistryObject<Block> block, Block baseBlock) {
         this.withExistingParent(ForgeRegistries.BLOCKS.getKey(block.get()).getPath(), mcLoc("block/stairs"))
-                .texture("side", new ResourceLocation(mcLoc("block/") + ForgeRegistries.BLOCKS.getKey(baseBlock).getPath()))
-                .texture("bottom", new ResourceLocation(mcLoc("block/") + ForgeRegistries.BLOCKS.getKey(baseBlock).getPath()))
-                .texture("top", new ResourceLocation(mcLoc("block/") + ForgeRegistries.BLOCKS.getKey(baseBlock).getPath()));
+                .texture("side", ResourceLocation.parse(mcLoc("block/") + ForgeRegistries.BLOCKS.getKey(baseBlock).getPath()))
+                .texture("bottom", ResourceLocation.parse(mcLoc("block/") + ForgeRegistries.BLOCKS.getKey(baseBlock).getPath()))
+                .texture("top", ResourceLocation.parse(mcLoc("block/") + ForgeRegistries.BLOCKS.getKey(baseBlock).getPath()));
     }
 
     public void blockItem(RegistryObject<Block> block) {

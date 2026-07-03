@@ -21,6 +21,8 @@ import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import org.jetbrains.annotations.NotNull;
 
+import com.mojang.serialization.MapCodec;
+
 import javax.annotation.Nullable;
 
 public class BlockLantern extends FaceAttachedHorizontalDirectionalBlock implements SimpleWaterloggedBlock {
@@ -89,5 +91,11 @@ public class BlockLantern extends FaceAttachedHorizontalDirectionalBlock impleme
 
     public void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> blockStateBuilder) {
         blockStateBuilder.add(FACING, FACE, WATERLOGGED);
+    }
+
+    @Override
+    protected MapCodec<? extends FaceAttachedHorizontalDirectionalBlock> codec() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'codec'");
     }
 }

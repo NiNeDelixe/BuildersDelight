@@ -50,7 +50,7 @@ public class BdItems {
         item.ifPresent(i -> {
             ITEMS.register(tooltipKey + "_tooltip", () -> new Item(new Item.Properties()) {
                 @Override
-                public void appendHoverText(@NotNull ItemStack stack, @Nullable Level worldIn, List<Component> tooltip, @NotNull TooltipFlag flagIn) {
+                public void appendHoverText(@NotNull ItemStack stack, @Nullable Item.TooltipContext worldIn, List<Component> tooltip, @NotNull TooltipFlag flagIn) {
                     tooltip.add(Component.translatable("tooltip.item." + tooltipKey).withStyle(ChatFormatting.GRAY));
                 }
             });

@@ -26,9 +26,9 @@ public class BDDataGenerators {
         ExistingFileHelper existingFileHelper = event.getExistingFileHelper();
         CompletableFuture<HolderLookup.Provider> lookupProvider = event.getLookupProvider();
 
-        generator.addProvider(event.includeServer(), new BdRecipes(packOutput));
+        generator.addProvider(event.includeServer(), new BdRecipes(packOutput, lookupProvider));
 
-        generator.addProvider(event.includeServer(), BdBlockLootTableProvider.create(packOutput));
+        generator.addProvider(event.includeServer(), BdBlockLootTableProvider.create(packOutput, lookupProvider));
 
         BlockTagsProvider blockTagsProvider = new BdBlockTagProvider(packOutput, lookupProvider, existingFileHelper);
         generator.addProvider(event.includeServer(), blockTagsProvider);

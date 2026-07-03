@@ -5,12 +5,13 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.protocol.Packet;
 import net.minecraft.network.protocol.game.ClientGamePacketListener;
+import net.minecraft.network.syncher.SynchedEntityData;
+import net.minecraft.server.level.ServerEntity;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.AABB;
-import net.minecraftforge.network.NetworkHooks;
 
 import java.util.List;
 
@@ -50,7 +51,7 @@ public class EntitySit extends Entity {
     }
 
     @Override
-    protected void defineSynchedData() {}
+    protected void defineSynchedData(SynchedEntityData.Builder p_333664_) {}
 
     @Override
     protected void readAdditionalSaveData(CompoundTag compound) {}
@@ -58,11 +59,11 @@ public class EntitySit extends Entity {
     @Override
     protected void addAdditionalSaveData(CompoundTag compound) {}
 
-    @Override
-    public double getPassengersRidingOffset()
-    {
-        return 0.0;
-    }
+    // @Override
+    // public double getPassengersRidingOffset()
+    // {
+    //     return 0.0;
+    // }
 
     @Override
     protected boolean canRide(Entity entity)
@@ -71,9 +72,9 @@ public class EntitySit extends Entity {
     }
 
     @Override
-    public Packet<ClientGamePacketListener> getAddEntityPacket()
+    public Packet<ClientGamePacketListener> getAddEntityPacket(ServerEntity p_344981_)
     {
-        return NetworkHooks.getEntitySpawningPacket(this);
+        return super.getAddEntityPacket(p_344981_);
     }
 
     public static InteractionResult create(Level level, BlockPos pos, double yOffset, Player player)

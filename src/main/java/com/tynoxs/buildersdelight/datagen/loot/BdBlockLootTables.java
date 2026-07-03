@@ -2,7 +2,9 @@ package com.tynoxs.buildersdelight.datagen.loot;
 
 import com.tynoxs.buildersdelight.content.init.BdBlocks;
 import net.minecraft.advancements.critereon.StatePropertiesPredicate;
+import net.minecraft.core.HolderLookup;
 import net.minecraft.data.loot.BlockLootSubProvider;
+import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.flag.FeatureFlags;
 import net.minecraft.world.level.block.Block;
@@ -27,8 +29,8 @@ import java.util.function.BiConsumer;
 public class BdBlockLootTables extends BlockLootSubProvider {
     public List<Block> list = new ArrayList<>();
 
-    public BdBlockLootTables() {
-        super(Set.of(), FeatureFlags.REGISTRY.allFlags(), new HashMap<>());
+    public BdBlockLootTables(HolderLookup.Provider lookupProvider) {
+        super(Set.of(), FeatureFlags.REGISTRY.allFlags(), lookupProvider);
     }
 
     @Override
@@ -874,13 +876,13 @@ public class BdBlockLootTables extends BlockLootSubProvider {
 
     // Override and ignore the missing loot table error
     @Override
-    public void generate(BiConsumer<ResourceLocation, LootTable.Builder> p_249322_) {
+    public void generate(BiConsumer<ResourceKey<LootTable>, LootTable.Builder> p_249322_) {
         this.generate();
-        Set<ResourceLocation> set = new HashSet<>();
+        Set<ResourceKey<LootTable>> set = new HashSet<>();
 
         for (Block block : list) {
             if (block.isEnabled(this.enabledFeatures)) {
-                ResourceLocation resourcelocation = block.getLootTable();
+                ResourceKey<LootTable> resourcelocation = block.getLootTable();
                 if (resourcelocation != BuiltInLootTables.EMPTY && set.add(resourcelocation)) {
                     LootTable.Builder loottable$builder = this.map.remove(resourcelocation);
                     if (loottable$builder == null) {

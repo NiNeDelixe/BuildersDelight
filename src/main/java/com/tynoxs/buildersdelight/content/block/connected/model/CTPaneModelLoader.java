@@ -21,7 +21,7 @@ import java.util.function.Function;
 
 public class CTPaneModelLoader implements IGeometryLoader<CTPaneModelLoader.CTModelGeometry> {
 
-    public static final ResourceLocation GENERATOR_LOADER = new ResourceLocation(BuildersDelight.MODID, "connectedpaneloader");
+    public static final ResourceLocation GENERATOR_LOADER = ResourceLocation.fromNamespaceAndPath(BuildersDelight.MODID, "connectedpaneloader");
 
     public static void register(ModelEvent.RegisterGeometryLoaders event) {
         event.register("connectedpaneloader", new CTPaneModelLoader());
@@ -34,8 +34,8 @@ public class CTPaneModelLoader implements IGeometryLoader<CTPaneModelLoader.CTMo
 
     public static class CTModelGeometry implements IUnbakedGeometry<CTModelGeometry> {
         @Override
-        public BakedModel bake(IGeometryBakingContext context, ModelBaker baker, Function<Material, TextureAtlasSprite> spriteGetter, ModelState modelState, ItemOverrides overrides, ResourceLocation modelLocation) {
-            return new CTConnectedPaneBakedModel(context, modelLocation);
+        public BakedModel bake(IGeometryBakingContext context, ModelBaker baker, Function<Material, TextureAtlasSprite> spriteGetter, ModelState modelState, ItemOverrides overrides) {
+            return new CTConnectedPaneBakedModel(context, GENERATOR_LOADER); //TODO: This is a hack, but it works for now. The model location is not used in the baked model, so we can just pass in a dummy value.
         }
     }
 }
