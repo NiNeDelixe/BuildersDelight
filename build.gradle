@@ -18,12 +18,12 @@ version = '1.1'
 group = 'com.tynoxs.buildersdelight'
 archivesBaseName = 'buildersdelight'
 
-java.toolchain.languageVersion = JavaLanguageVersion.of(17)
+java.toolchain.languageVersion = JavaLanguageVersion.of(21)
 
 println "Java: ${System.getProperty 'java.version'}, JVM: ${System.getProperty 'java.vm.version'} (${System.getProperty 'java.vendor'}), Arch: ${System.getProperty 'os.arch'}"
 minecraft {
 
-    mappings channel: 'official', version: '1.20.1'
+    mappings channel: 'official', version: '1.21.1'
 
     runs {
         client {
@@ -108,7 +108,7 @@ repositories {
 }
 
 dependencies {
-    minecraft 'net.minecraftforge:forge:1.20.1-47.1.47'
+    minecraft 'net.minecraftforge:forge:1.21.1-52.1.0'
     //JEI Implementation
     compileOnly fg.deobf("mezz.jei:jei-${mc_version}-common-api:${jei_version}")
     compileOnly fg.deobf("mezz.jei:jei-${mc_version}-forge-api:${jei_version}")
